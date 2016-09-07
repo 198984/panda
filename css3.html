@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        #box {
+            width: 300px;
+            height: 350px;
+            background: greenyellow;
+            overflow: hidden;
+        }
+        #int {
+            width: 250px;
+            display: block;
+            border: 0px;
+            height: 50px;
+            background-color: #fff;
+            margin: 20px auto 20px auto;
+            font-size: 24px;
+            color: greenyellow;
+            text-align: right;
+            padding-right: 10px;
+        }
+        #box-div {
+            width: 280px;
+            margin: 0 auto;
+        }
+        .box-ul {
+            list-style: none;
+            margin: 0;
+
+            padding: 0;
+        }
+        .box-li {
+            width: 50px;
+            height: 50px;
+            margin-left: 15px;
+            background: #f5f5f5;
+            color: yellowgreen;
+            list-style: none;
+            float: left;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="text" id="int" value="0">
+    <div id="box-div">
+        <ul class="box-ul">
+            <li class="box-li" value="7">7</li>
+            <li class="box-li" value="8">8</li>
+            <li class="box-li" value="9">9</li>
+            <li class="box-li" value="+">+</li>
+            <li class="box-li" value="4">4</li>
+            <li class="box-li" value="5">5</li>
+            <li class="box-li" value="6">6</li>
+            <li class="box-li" value="-">-</li>
+            <li class="box-li" value="1">1</li>
+            <li class="box-li" value="2">2</li>
+            <li class="box-li" value="3">3</li>
+            <li class="box-li" value="*">*</li>
+            <li class="box-li" value="0">0</li>
+            <li class="box-li" value="c">c</li>
+            <li class="box-li" value="=">=</li>
+            <li class="box-li" value="/">/</li>
+        </ul>
+    </div>
+</div>
+<com
+<script type="text/javascript">
+    (function () {
+        var sNum1='';//初始化第一次输入的数字
+        var sOpt='';//初始化运算符
+        var bNeedClear=false;//是否要清除输入框的内容
+        var boxDiv = document.getElementById("box-div"),
+                boxLi = boxDiv.getElementsByTagName("li");
+        for (var i = 0; i < boxLi.length; i++) {
+            boxLi[i].onclick=doInput//循环取出点击的元素标签
+        }
+        function doInput(){
+            var int=document.getElementById("int");//
+            var sHtml=this.innerHTML.replace("","");//取出元素当前值替换之前值并赋给sHtml
+            switch(sHtml){//检测sHtml是运算符还是数字并做运算
+                case "=" :int.value=result(parseInt(sNum1),parseInt(int.value),sOpt);//运算结果
+                    sNum1='';//数字清空
+                    sOpt='';//运算符清空
+                    bNeedClear=true;//清除输入框的内容
+                break;
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                    bNeedClear=true;
+                        if(sNum1.length!=0){//如果sNum1的个数不等于零
+                            int.value=result(parseInt(sNum1),parseInt(int.value),sOpt);//计算结果
+                        }
+                    sOpt =sHtml;//运算符赋给sOpt
+                    sNum1= int.value;
+                    break;
+                case 'c':
+                    int.value='0';
+                    sNum1='';
+                    sOpt='';
+                    break;
+                default:	//数字
+                    if(bNeedClear)
+                    {
+                        int.value=parseInt(sHtml, 10);
+                        bNeedClear=false;
+                    }
+                    else
+                    {
+                        int.value=parseInt(int.value+sHtml, 10);
+                    }
+                    break;
+            }
+        }
+
+        function result(num1,num2,sOpt){
+            var res=0;
+            switch(sOpt){
+                case "+":res=num1+num2;
+                    break;
+                case "-":res=num1-num2;
+                    break;
+                case "*":res=num1*num2;
+                    break;
+                case "/":res=num1/num2;
+                    break;
+                default:res=num2;
+            }
+            return res;
+        }
+    })();
+</script>
+</body>
+</html>
