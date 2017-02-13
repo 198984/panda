@@ -1,145 +1,188 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>计算器</title>
-    <link rel="stylesheet" href="">
-    <style type="text/css">
-        #box {
-            width: 300px;
-            height: 350px;
-            background: greenyellow;
+    <title>Title</title>
+    <style>
+        .box{
+            margin: 0 auto;
+            width: 600px;
+            height: 800px;
+            background: #8ECC2B;;
+        }
+        .boxC{
+            width: 450px;
+            margin: 0 auto;
             overflow: hidden;
         }
-        #int {
-            width: 250px;
-            display: block;
-            border: 0px;
-            height: 50px;
-            background-color: #fff;
-            margin: 20px auto 20px auto;
-            font-size: 24px;
-            color: greenyellow;
-            text-align: right;
-            padding-right: 10px;
-        }
-        #box-div {
-            width: 280px;
-            margin: 0 auto;
-        }
-        .box-ul {
-            list-style: none;
-            margin: 0;
-
-            padding: 0;
-        }
-        .box-li {
-            width: 50px;
-            height: 50px;
-            margin-left: 15px;
+        .box-header{
+            width: 350px;
+            height: 260px;
             background: #f5f5f5;
-            color: yellowgreen;
-            list-style: none;
-            float: left;
-            margin-bottom: 10px;
-            font-size: 24px;
-            text-align: center;
-            line-height: 50px;
-            cursor: pointer;
+            border-radius: 300px 300px 200px 200px;
+            margin:0 auto;
+            margin-top: 50px;
+            position: relative;
+
+
+        }
+        .header{
+            width: 350px;
+            height: 260px;
+            background: #f5f5f5;
+            border-radius: 300px 300px 200px 200px;
+            top:0;;
+            position: absolute;
+            z-index: 10;
+
+        }
+        .box-body{
+            width: 350px;
+            height: 250px;
+            margin: 0 auto;
+            background: #f3f3f3;
+            border-radius: 270px 270px 150px 150px;
+            position: relative;
+        }
+        .box-hand{
+            width: 300px;
+            height: 150px;
+            top: -20px;
+            position: relative;
+            margin: 0 auto;
+            border-radius: 150px;;
+            overflow: hidden;
+            position: relative;
+        }
+        .bh-a{width: 300px; height: 80px;border-radius: 16px 22px 43px 57px;  background: #000;position: absolute;top:0;}
+        .bh-b{width: 80px; height: 140px;border-radius: 20px 22px 43px 80px;  background: #000;position: absolute;left: 0px}
+        .bh-c{width: 68px; height: 140px;border-radius: 16px 22px 43px 30px;  background: #000;position: absolute;right: 0px}
+        .bh-d{width: 180px; height: 60px;border-radius: 40px 52px 43px 57px; background: #f3f3f3;position: absolute;top:70px;left:50%;margin-left: -90px;}
+
+.foot{width: 300px;height: 100px;position: relative;margin: 0 auto}
+        .foot-left{width: 120px; height: 80px;position: absolute;left: 0px;background: #000;border-radius: 90px 100px 20px 80px;bottom: 0;}
+        .foot-right{width: 120px; height: 80px;position: absolute;background: #000;border-radius: 90px 70px 80px 20px;bottom: 0;;
+            right:-15px;}
+        .left-ear{
+            position: absolute;
+            top:-25px;
+            width: 120px;
+            height: 80px;
+            left: -20px;
+            background: #000000;
+            -webkit-transform: rotate(-40deg);
+            border-radius: 60px 60px 2px 2px;
+        }
+        .right-ear{
+            position: absolute;
+            top:-25px;
+            width: 120px;
+            height: 80px;
+            right: -20px;
+            background: #000000;
+            -webkit-transform: rotate(40deg);
+            border-radius: 60px 60px 2px 2px;
+
+        }
+        .left-eyes{
+            position: absolute;
+            left: 80px;
+            width: 60px;
+            height: 80px;
+            background: #000;
+            border-radius: 30px 20px;
+            top:50px;
+            border-radius: 60px 60px 80px 55px;
+            -webkit-transform: rotate(20deg);
+        }
+        .right-eyes{
+            position: absolute;
+            right: 80px;
+            top:50px;
+            width: 60px;
+            height: 80px;
+            background: #000;
+            border-radius: 60px 60px 55px 80px;
+            -webkit-transform: rotate(-20deg);
+        }
+        .small-eyes{
+            width: 30px;
+            height: 30px;
+            background: #fff;
+        border-radius: 50%;
+            margin-top: 28px;
+            margin-left: 15px;
+            position: relative;
+        }
+        .small-eyes:after{
+            position: absolute;
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: #000;
+            border-radius: 50%;
+            top:8px;
+            left: 0px;
+            -webkit-animation:mymove 2s ease infinite;
         }
 
+@-webkit-keyframes mymove {
+    0%{
+        left: 0px;
+    }
+    20%{
+        left: 6px;
+    }
+    50%{
+        left: 14px;
+    }
+    80%{
+        left: 6px;
+    }
+    100%{
+        left: 0px;
+    }
+}
+        .mask{
+            text-align: center;
+            font-size: 48px;
+            color: #FFF;
+            text-decoration: double;
+            line-height: 200px;
+        }
+        .center-nose{position: absolute;width: 50px;height: 30px;background: #000;border-radius: 50%;left: 50%;margin-left: -25px;top:118px;}
+        .mouse{width: 80px;height: 50px;position: absolute;top:156px;margin-left: -40px;left: 50%; border:6px solid #000000;border-radius: 100%; }
+        .mark{width: 120px;background: #f5f5f5;position: absolute;height: 30px;margin-left: -60px;left: 50%;z-index: 20;top:156px;}
     </style>
 </head>
 <body>
-<div id="box">
-    <input type="text" id="int" value="0">
-    <div id="box-div">
-        <ul class="box-ul">
-            <li class="box-li" value="7">7</li>
-            <li class="box-li" value="8">8</li>
-            <li class="box-li" value="9">9</li>
-            <li class="box-li" value="+">+</li>
-            <li class="box-li" value="4">4</li>
-            <li class="box-li" value="5">5</li>
-            <li class="box-li" value="6">6</li>
-            <li class="box-li" value="-">-</li>
-            <li class="box-li" value="1">1</li>
-            <li class="box-li" value="2">2</li>
-            <li class="box-li" value="3">3</li>
-            <li class="box-li" value="*">*</li>
-            <li class="box-li" value="0">0</li>
-            <li class="box-li" value="c">c</li>
-            <li class="box-li" value="=">=</li>
-            <li class="box-li" value="/">/</li>
-        </ul>
+<div class="box">
+    <div class="boxC">
+        <div class="box-header">
+            <div class="header">
+                <div class="left-eyes"><div class="small-eyes"></div></div>
+                <div class="center-nose"></div>
+                <div class="right-eyes"><div class="small-eyes"></div></div>
+                <div class="mouse"></div>
+                <div class="mark"></div>
+            </div>
+            <div class="left-ear"></div>
+            <div class="right-ear"></div>
+        </div>
+        <div class="box-body">
+            <div class="box-hand">
+                <div class="bh-a"></div>
+                <div class="bh-b"></div>
+                <div class="bh-c"></div>
+                <div class="bh-d"></div>
+            </div>
+            <div class="foot">
+                <div class="foot-left"></div>
+                <div class="foot-right"></div>
+            </div>
+        </div>
+        
     </div>
 </div>
-<com
-<script type="text/javascript">
-    (function () {
-        var sNum1='';//初始化第一次输入的数字
-        var sOpt='';//初始化运算符
-        var bNeedClear=false;//是否要清除输入框的内容
-        var boxDiv = document.getElementById("box-div"),
-                boxLi = boxDiv.getElementsByTagName("li");
-        for (var i = 0; i < boxLi.length; i++) {
-            boxLi[i].onclick=doInput//循环取出点击的元素标签
-        }
-        function doInput(){
-            var int=document.getElementById("int");//
-            var sHtml=this.innerHTML.replace("","");//取出元素当前值替换之前值并赋给sHtml
-            switch(sHtml){//检测sHtml是运算符还是数字并做运算
-                case "=" :int.value=result(parseInt(sNum1),parseInt(int.value),sOpt);//运算结果
-                    sNum1='';//数字清空
-                    sOpt='';//运算符清空
-                    bNeedClear=true;//清除输入框的内容
-                break;
-                case "+":
-                case "-":
-                case "*":
-                case "/":
-                    bNeedClear=true;
-                        if(sNum1.length!=0){//如果sNum1的个数不等于零
-                            int.value=result(parseInt(sNum1),parseInt(int.value),sOpt);//计算结果
-                        }
-                    sOpt =sHtml;//运算符赋给sOpt
-                    sNum1= int.value;
-                    break;
-                case 'c':
-                    int.value='0';
-                    sNum1='';
-                    sOpt='';
-                    break;
-                default:	//数字
-                    if(bNeedClear)
-                    {
-                        int.value=parseInt(sHtml, 10);
-                        bNeedClear=false;
-                    }
-                    else
-                    {
-                        int.value=parseInt(int.value+sHtml, 10);
-                    }
-                    break;
-            }
-        }
-
-        function result(num1,num2,sOpt){
-            var res=0;
-            switch(sOpt){
-                case "+":res=num1+num2;
-                    break;
-                case "-":res=num1-num2;
-                    break;
-                case "*":res=num1*num2;
-                    break;
-                case "/":res=num1/num2;
-                    break;
-                default:res=num2;
-            }
-            return res;
-        }
-    })();
-</script>
 </body>
 </html>
